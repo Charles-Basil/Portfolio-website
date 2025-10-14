@@ -1,15 +1,12 @@
 import { sendEmail } from './email.js';
-
-// Simple alert-based toast for immediate testing
-function showToast(message, type = 'success') {
-  alert(message);
-}
+import showToast from './toast.js';
 
 export function initContactForm() {
   const form = document.getElementById('contact-form');
   const statusDiv = document.getElementById('form-status');
 
   if (!form) return;
+  console.log('[initContactForm] form found, wiring submit handler');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -32,20 +29,31 @@ export function initContactForm() {
     try {
       await sendEmail(form);
 
-      // Success - Show toast immediately
-      showToast('Message sent successfully! 🎉', 'success');
-
-      // Reset form
-      form.reset();
-      statusDiv.textContent = '';
-      statusDiv.classList.remove('show');
-      submitBtn.classList.remove('loading');
-      submitBtn.textContent = 'Send Message';
+  // Success - Show toast immediately (green, white text)
+  console.log('[initContactForm] sendEmail resolved — alerting and performing soft reset');
+  // Simple user-facing alert
+  alert('Message sent successfully!');
+  // Soft reset: clear the form and UI, scroll to top and focus the first field
+  form.reset();
+  statusDiv.textContent = '';
+  statusDiv.classList.remove('show');
+  submitBtn.classList.remove('loading');
+  submitBtn.textContent = 'Send Message';
+  // Smooth scroll to top so the user notices the page state
+  try {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (e) {
+    window.scrollTo(0, 0);
+  }
+  // Focus the name input for better UX
+  const firstInput = form.querySelector('input, textarea, select');
+  if (firstInput && typeof firstInput.focus === 'function') firstInput.focus();
 
     } catch (error) {
       console.error('Email send failed:', error);
-      // For testing, show success toast even on error to verify it works
-      showToast('Message sent successfully!', 'success');
+      console.log('[initContactForm] sendEmail rejected, showing error toast');
+  // On error, show an error toast so user knows it failed (manual dismiss)
+  showToast('Failed to send message. Please try again later.', 'error', { duration: 0 });
       submitBtn.classList.remove('loading');
       submitBtn.textContent = 'Send Message';
     }

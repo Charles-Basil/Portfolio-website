@@ -6,25 +6,41 @@ const mobileNav = () => {
     // state
     let isMobileNavOpen = false;
     
-    headerBtn.addEventListener('click', () => {
+    // Ensure mobile nav exists
+    if (!headerBtn || !mobileNav) {
+        console.error('Mobile navigation elements not found');
+        return;
+    }
+    
+    headerBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         isMobileNavOpen = !isMobileNavOpen;
-        if (isMobileNavOpen){
-
+        
+        if (isMobileNavOpen) {
             mobileNav.style.display = 'flex';
+            // Force reflow
+            mobileNav.offsetHeight;
+            mobileNav.classList.add('show');
             document.body.style.overflowY = 'hidden';
-        }else{
-            mobileNav.style.display = 'none';
+        } else {
+            mobileNav.classList.remove('show');
+            setTimeout(() => {
+                mobileNav.style.display = 'none';
+            }, 300); // Match transition duration
             document.body.style.overflowY = 'auto';
         }
     });
 
-   mobileLinks.forEach(Link => {
-    Link.addEventListener('click', () => {
-        isMobileNavOpen = false;
-        mobileNav.style.display = 'none';
-        document.body.style.overflowY = 'auto';
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            isMobileNavOpen = false;
+            mobileNav.classList.remove('show');
+            setTimeout(() => {
+                mobileNav.style.display = 'none';
+            }, 300);
+            document.body.style.overflowY = 'auto';
+        });
     });
-   });
 };
 
 export default mobileNav;

@@ -42,11 +42,10 @@
     margin-right: auto;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-
 }
 
 .section{
-    margin-top: 5rem;
+    margin-top: 1rem; /* further reduced global section spacing for tighter UI */
 }
 
 .loading{
@@ -87,7 +86,7 @@
         max-width: 1024px;
     }
     .section{
-        margin-top: 10rem;
+        margin-top: 2rem; /* significantly reduced large-screen spacing */
     }
 }
 

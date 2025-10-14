@@ -4,19 +4,40 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 1rem;
+    gap: 1rem; /* restored spacing to be slightly more spacious */
+    margin-top: -8rem; /* pull entire contact section right underneath Pos-Padi project */
 }
 
 .contact__title{
     font-size: var(--size-2xl);
     color: var(--clr-light);
     text-transform: capitalize;
+    background: linear-gradient(135deg, var(--clr-light) 0%, var(--clr-rose) 50%, var(--clr-indigo) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .contact__description{
     font-size: var(--size-sm);
     color: var(--clr-slate600);
     max-width: 60ch;
+    transition: color 0.3s ease;
+}
+
+.contact__description:hover {
+    color: var(--clr-light);
 }
 
 .contact__btn{
@@ -26,11 +47,11 @@
 .contact__form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem; /* slightly more room between fields */
     width: 100%;
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto;
-    padding: 3rem;
+    padding: 3rem; /* restored to previous, more generous padding */
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(169, 150, 150, 0.04) 100%);
     backdrop-filter: blur(20px);
     border-radius: 20px;
@@ -41,6 +62,15 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact__form:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 12px 24px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .contact__form::before {
@@ -173,7 +203,7 @@
 }
 
 .form-status {
-    margin-top: 2rem;
+    margin-top: 2rem; /* restore previous margin so status has breathing room */
     font-size: var(--size-sm);
     font-weight: 500;
     color: var(--clr-rose);
