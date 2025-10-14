@@ -89,3 +89,5 @@ body::-webkit-scrollbar-thumb{
     background-color: var(--clr-rose);
     outline: 1px solid var(--clr-rose);
 }
+
+/* Toastify.js styles will be handled by the library */

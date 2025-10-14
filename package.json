@@ -10,5 +10,9 @@
   },
   "devDependencies": {
     "vite": "^6.1.0"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "toastify-js": "^1.12.0"
   }
 }

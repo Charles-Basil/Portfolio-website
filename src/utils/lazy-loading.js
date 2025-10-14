@@ -1,22 +1,19 @@
-const lazyLoading =() => {
+const lazyLoading = () => {
+  const lazyImgs = document.querySelectorAll('.lazy');
 
-    const lazyImgs = document.querySelectorAll('.lazy');
-    
-    const observer = new IntersectionObserver((entries, observer) => {
-       entries.forEach(entry =>{
-        if (entry.isIntersecting){
-           let img = entry.target;
-           img.src = img.dataset.src
-           img.classList.remove('loading');
-           img.classList.add('loaded');
-            observer.unobserve(img);
-        }
-       }); 
-    });
-    
-    lazyImgs.forEach(img => {
-        observer.observe(img);
-    });
+  lazyImgs.forEach(img => {
+    const src = img.dataset.src || img.src;
+    if (src) {
+      img.src = src;
+      img.onload = () => {
+        img.classList.remove('loading');
+        img.classList.add('loaded');
+      };
+      img.onerror = () => {
+        console.warn(`Failed to load image: ${src}`);
+        img.classList.remove('loading');
+      };
+    }
+  });
 };
-
 export default lazyLoading;

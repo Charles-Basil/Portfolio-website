@@ -13,6 +13,13 @@ import '../styles/utils.css';
 import mobileNav from './utils/mobile-nav';
 import darkMode from './utils/dark-mode';
 import lazyLoading from './utils/lazy-loading';
+import { initEmailJS } from './utils/email';
+import { initContactForm } from './utils/contact-form';
+import { initAnimations } from './utils/animations';
+
 mobileNav();
 darkMode();
 lazyLoading();
+initEmailJS();
+initContactForm();
+initAnimations();
