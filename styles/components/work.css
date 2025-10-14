@@ -97,7 +97,8 @@
 }
 
 .work__subtitle{
-  display: none;
+  display: block;
+  font-size: var(--size-base);
 }
 
 @media (min-width:475px) {
