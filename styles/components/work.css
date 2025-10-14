@@ -128,7 +128,8 @@
       "content2 image2"
       "image3 content3"
       "content4 image4"
-      "image5 content5";
+      "image5 content5"
+      "content6 image6";
     place-items: center;
     /* much smaller minimum row height to eliminate vertical gaps */
     grid-auto-rows: minmax(180px, auto);
@@ -146,7 +147,7 @@
   .work__content3{ grid-area: content3; }
   .work__content4{ grid-area: content4; }
   .work__content5{ grid-area: content5; }
-  .work__content6{ grid-area: content6; }
+  .work__content6{ grid-area: content6; width: 80%; margin: 0 auto; }
 
 
   .work__project{ padding: 0 0.6rem; max-width: 420px; }

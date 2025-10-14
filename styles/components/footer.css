@@ -7,3 +7,35 @@
     letter-spacing: 0.2em;
     user-select: none;
 }
+
+.footer__socials {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.footer__social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--clr-slate100);
+    color: var(--clr-slate600);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.footer__social-link:hover {
+    background-color: var(--clr-indigo);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.footer__social-link svg {
+    width: 20px;
+    height: 20px;
+}
